@@ -163,7 +163,7 @@ try {
 
         //   return aPrice - bPrice;
         // })[0];
-        const priceSplit = spObj?.filter_priceRange.split(',');
+        const priceSplit =spObj?.filter_priceRange ?spObj?.filter_priceRange.split(','):["0","2000"];
         const minPrice = priceSplit && priceSplit.length > 0 ? Number(priceSplit[0]) : 0;
         const maxPrice = priceSplit && priceSplit.length > 1 ? Number(priceSplit[1]) : 2000;
         const roomPrices = cheapestRoom?.price ? [cheapestRoom.price] : [];
