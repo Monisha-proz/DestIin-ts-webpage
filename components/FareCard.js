@@ -159,12 +159,13 @@ export function HotelFareCard({ searchState, className = "" }) {
             />
           )}
           {Object.entries(fareBreakdowns).map(([roomType, bedOptions]) => (
+            console.log("bedOptions",bedOptions),
             <div
               key={roomType}
               className="rounded-lg border border-gray-200 bg-gray-50 p-3"
             >
               <p className="mb-2 text-sm font-semibold text-gray-700">
-                Room Type: {roomType}
+                {/* Room Type: {bedOptions?.Rooms[0]} */}
               </p>
               <div className="flex flex-col gap-3">
                 {Object.entries(bedOptions).map(([bedOption, breakdown]) => (
