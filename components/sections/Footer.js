@@ -14,7 +14,7 @@ export async function Footer() {
     <footer className="relative pb-5">
       <SubscribeNewsletter isSubscribed={isSubscribed} />
       <QuickLinks />
-      <div className="relative z-10 text-center text-sm font-medium">
+      {/* <div className="relative z-10 text-center text-sm font-medium">
         Developed by{" "}
         <Link
           aria-label={"Link to Github of the developer"}
@@ -37,7 +37,7 @@ export async function Footer() {
         >
           Figma Community
         </Link>
-      </div>
+      </div> */}
     </footer>
   );
 }

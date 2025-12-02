@@ -54,52 +54,61 @@ export async function POST(req) {
       revalidateTag("userDetails");
     }
 
-    const flightItinerary = await getOneDoc(
-      "FlightItinerary",
-      {
-        flightCode: body.flightNumber,
-        date: new Date(body.flightDateTimestamp),
+    // Get booking data from the get_reserved_flight API which handles both DB and mock bookings
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const bookingResponse = await fetch(`${baseUrl}/api/user/get_reserved_flight`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': req.headers.get('cookie') || ''
       },
-      ["flight"],
-      0,
-    );
-    const bookingData = await getOneDoc(
-      "FlightBooking",
-      {
-        flightItineraryId: strToObjectId(flightItinerary._id),
-        userId: strToObjectId(user._id),
-        paymentStatus: "pending",
-        ticketStatus: "pending",
-      },
-      ["userFlightBooking"],
-      0,
-    );
-    if (Object.keys(bookingData).length < 1) {
+      body: JSON.stringify({
+        flightNumber: body.flightNumber,
+        flightDateTimestamp: body.flightDateTimestamp
+      })
+    });
+
+    if (!bookingResponse.ok) {
       return Response.json({
         success: false,
-        message: "There is no pending flight booking",
+        message: "Failed to fetch booking details",
+      }, { status: 500 });
+    }
+
+    const bookingResult = await bookingResponse.json();
+    
+    if (!bookingResult.success || !bookingResult.data) {
+      return Response.json({
+        success: false,
+        message: bookingResult.message || "There is no pending flight booking",
       });
     }
 
-    const isSeatTakenPromise = bookingData.selectedSeats.map(async (el) => {
-      return await isSeatTakenByElse(el.seatId._id, el.passengerId);
-    });
+    const bookingData = bookingResult.data;
+    const isMockBooking = bookingData._id?.toString().startsWith("mock_booking_id_");
 
-    const isTaken = (await Promise.all(isSeatTakenPromise)).some(Boolean);
-
-    if (isTaken) {
-      const cancellationData = {
-        reason: "Seat taken by another passenger due to expired reservation",
-        canceledAt: new Date(),
-        canceledBy: "system",
-      };
-
-      await cancelBooking(bookingData.pnrCode, cancellationData);
-      return Response.json({
-        success: false,
-        message:
-          "Your seat is taken by someone else, thus we have canceled your booking",
+    // Skip seat validation for mock bookings
+    if (!isMockBooking) {
+      const isSeatTakenPromise = bookingData.selectedSeats.map(async (el) => {
+        return await isSeatTakenByElse(el.seatId._id, el.passengerId);
       });
+
+      const isTaken = (await Promise.all(isSeatTakenPromise)).some(Boolean);
+
+      if (isTaken) {
+        const cancellationData = {
+          reason: "Seat taken by another passenger due to expired reservation",
+          canceledAt: new Date(),
+          canceledBy: "system",
+        };
+
+        await cancelBooking(bookingData.pnrCode, cancellationData);
+        return Response.json({
+          success: false,
+          message:
+            "Your seat is taken by someone else, thus we have canceled your booking",
+        });
+      }
     }
 
     const stripe = initStripe();
@@ -117,11 +126,12 @@ export async function POST(req) {
         receipt_email: user.email,
         metadata: {
           type: "flightBooking",
-          flightItineraryId: flightItinerary._id.toString(),
+          flightItineraryId: bookingData.flightItineraryId?._id?.toString() || 'mock_flight',
           flightBookingId: bookingData._id.toString(),
           pnrCode: bookingData.pnrCode,
           userId: user._id.toString(),
           userEmail: user.email,
+          isMockBooking: isMockBooking.toString(),
         },
       },
       { idempotencyKey },

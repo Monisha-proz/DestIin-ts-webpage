@@ -1,0 +1,143 @@
+{
+    "success": true,
+    "data": {
+        "cities": [
+            {
+                "code": "DEL",
+                "name": "New Delhi",
+                "city": "New Delhi",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "North India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "BOM",
+                "name": "Mumbai",
+                "city": "Mumbai",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "West India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "BLR",
+                "name": "Bangalore",
+                "city": "Bangalore",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "South India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "MAA",
+                "name": "Chennai",
+                "city": "Chennai",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "South India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "HYD",
+                "name": "Hyderabad",
+                "city": "Hyderabad",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "South India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "CCU",
+                "name": "Kolkata",
+                "city": "Kolkata",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "East India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "GOI",
+                "name": "Goa",
+                "city": "Goa",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "West India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "PNQ",
+                "name": "Pune",
+                "city": "Pune",
+                "country": "India",
+                "countryCode": "IN",
+                "region": "West India",
+                "timezone": "Asia/Kolkata",
+                "type": "domestic"
+            },
+            {
+                "code": "DXB",
+                "name": "Dubai",
+                "city": "Dubai",
+                "country": "United Arab Emirates",
+                "countryCode": "AE",
+                "region": "Middle East",
+                "timezone": "Asia/Dubai",
+                "type": "international"
+            },
+            {
+                "code": "SIN",
+                "name": "Singapore",
+                "city": "Singapore",
+                "country": "Singapore",
+                "countryCode": "SG",
+                "region": "Southeast Asia",
+                "timezone": "Asia/Singapore",
+                "type": "international"
+            },
+            {
+                "code": "LHR",
+                "name": "London",
+                "city": "London",
+                "country": "United Kingdom",
+                "countryCode": "GB",
+                "region": "Europe",
+                "timezone": "Europe/London",
+                "type": "international"
+            },
+            {
+                "code": "BKK",
+                "name": "Bangkok",
+                "city": "Bangkok",
+                "country": "Thailand",
+                "countryCode": "TH",
+                "region": "Southeast Asia",
+                "timezone": "Asia/Bangkok",
+                "type": "international"
+            },
+            {
+                "code": "JFK",
+                "name": "New York",
+                "city": "New York",
+                "country": "United States",
+                "countryCode": "US",
+                "region": "North America",
+                "timezone": "America/New_York",
+                "type": "international"
+            }
+        ],
+        "metadata": {
+            "totalCities": 13,
+            "domesticCities": 8,
+            "internationalCities": 5,
+            "lastUpdated": "2025-11-29T05:48:24.000Z"
+        }
+    }
+}

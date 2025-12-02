@@ -1,7 +1,7 @@
 import { BreadcrumbUI } from "@/components/local-ui/breadcrumb";
 import { FlightData } from "@/components/pages/flights.[flightId]/sections/FlightData";
 import { FlightDetails } from "@/components/pages/flights.[flightId]/sections/FlightsSchedule";
-import { getOneDoc } from "@/lib/db/getOperationDB";
+import { getFlightFromJSON } from "@/lib/helpers/flights/getFlightsFromJSON";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { getUserDetails } from "@/lib/services/user";
@@ -29,13 +29,9 @@ export default async function FlightDetailsPage({ params }) {
   const flightCode = p[0];
   const date = !isNaN(+p[1]) ? +p[1] : p[1];
 
-  const flight = await getOneDoc(
-    "FlightItinerary",
-    { flightCode, date: new Date(date) },
-    ["flight"],
-  );
+  const flight = await getFlightFromJSON(flightCode, date);
 
-  if (Object.keys(flight).length === 0) {
+  if (!flight) {
     notFound();
   }
 
@@ -43,8 +39,11 @@ export default async function FlightDetailsPage({ params }) {
   let isSeatsAvailable = true;
 
   for (const segment of flight.segmentIds) {
-    const availableSeats = await getAvailableSeats(segment._id, flightClass);
-    if (availableSeats.length === 0) {
+    // For static data, we use the availableSeatsCount from the flight object
+    const segmentSeats = flight.availableSeatsCount.find(s => s.segmentId === segment._id);
+    const availableSeats = segmentSeats ? segmentSeats.availableSeats : 0;
+    
+    if (availableSeats === 0) {
       isSeatsAvailable = false;
       break;
     }
@@ -58,9 +57,9 @@ export default async function FlightDetailsPage({ params }) {
 
   if (loggedIn) {
     const userDetails = await getUserDetails(session.user.id);
-    metaData.isBookmarked = userDetails.flights.bookmarked.some((el) => {
+    metaData.isBookmarked = userDetails?.flights?.bookmarked?.some((el) => {
       return el.flightId?._id === flight._id;
-    });
+    }) || false;
 
     const flightBookings = await FlightBooking.findOne({
       flightItineraryId: flight._id,

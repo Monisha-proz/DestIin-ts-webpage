@@ -31,6 +31,7 @@ export function HotelBookingSteps({ hotelDetails, userDetails, searchState }) {
             nextStep="review"
             rooms={hotelDetails.rooms}
             guests={searchState.guests}
+            hotelDetails={hotelDetails}
           />
         );
       case "review":

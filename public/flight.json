@@ -1,0 +1,2595 @@
+{
+    "success": true,
+    "data": {
+        "flights": [
+            {
+                "id": "66c1f2a4b91c8d0012ab3456",
+                "flightCode": "AI203",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T06:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T08:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5900,
+                    "perAdult": 5900
+                },
+                "tags": [
+                    "Cheapest",
+                    "Fastest"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3499",
+                "flightCode": "6E512",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T09:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T12:10:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 190,
+                    "label": "3h 10m"
+                },
+                "stops": {
+                    "count": 1,
+                    "label": "1 Stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6200,
+                    "perAdult": 6200
+                },
+                "tags": [
+                    "Free Meals"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3501",
+                "flightCode": "EK512",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T14:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T17:00:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 7500,
+                    "perAdult": 7500
+                },
+                "tags": [
+                    "Premium",
+                    "Extra Baggage"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3555",
+                "flightCode": "SG815",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T18:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T22:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 225,
+                    "label": "3h 45m"
+                },
+                "stops": {
+                    "count": 1,
+                    "label": "1 Stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5400,
+                    "perAdult": 5400
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3602",
+                "flightCode": "GF568",
+                "airline": {
+                    "code": "GF",
+                    "name": "Gulf Air",
+                    "logo": "https://cdn.example.com/airlines/gulf-air.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T23:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-16T03:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 210,
+                    "label": "3h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6800,
+                    "perAdult": 6800
+                },
+                "tags": [
+                    "Overnight"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3650",
+                "flightCode": "FZ844",
+                "airline": {
+                    "code": "FZ",
+                    "name": "FlyDubai",
+                    "logo": "https://cdn.example.com/airlines/flydubai.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T07:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T10:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6100,
+                    "perAdult": 6100
+                },
+                "tags": [
+                    "Early Bird"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3701",
+                "flightCode": "UK256",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T12:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T14:40:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 160,
+                    "label": "2h 40m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 7200,
+                    "perAdult": 7200
+                },
+                "tags": [
+                    "Premium Economy",
+                    "Fastest"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3755",
+                "flightCode": "XY789",
+                "airline": {
+                    "code": "XY",
+                    "name": "Air India Express",
+                    "logo": "https://cdn.example.com/airlines/air-india-express.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-01-15T20:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T23:20:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 200,
+                    "label": "3h 20m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5600,
+                    "perAdult": 5600
+                },
+                "tags": [
+                    "Budget"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3801",
+                "flightCode": "EK502",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2025-01-15T10:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-01-15T12:00:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 120,
+                    "label": "2h"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6500,
+                    "perAdult": 6500
+                },
+                "tags": [
+                    "Premium",
+                    "Shortest"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab3850",
+                "flightCode": "SQ452",
+                "airline": {
+                    "code": "SQ",
+                    "name": "Singapore Airlines",
+                    "logo": "https://cdn.example.com/airlines/singapore-air.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2025-01-15T13:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "SIN",
+                        "city": "Singapore",
+                        "time": "2025-01-15T19:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 270,
+                    "label": "4h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "30kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 12500,
+                    "perAdult": 12500
+                },
+                "tags": [
+                    "Luxury",
+                    "Extra Baggage"
+                ],
+                "expireAt": "2026-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4001",
+                "flightCode": "AI301",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-02-20T08:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2025-02-20T10:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4500,
+                    "perAdult": 4500
+                },
+                "tags": [
+                    "Popular"
+                ],
+                "expireAt": "2026-02-20T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4002",
+                "flightCode": "6E205",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2025-03-10T14:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2025-03-10T16:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 105,
+                    "label": "1h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3200,
+                    "perAdult": 3200
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2026-03-10T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4003",
+                "flightCode": "SG101",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-04-05T11:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "GOI",
+                        "city": "Goa",
+                        "time": "2025-04-05T13:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5800,
+                    "perAdult": 5800
+                },
+                "tags": [
+                    "Beach Destination"
+                ],
+                "expireAt": "2026-04-05T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4004",
+                "flightCode": "UK801",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2025-02-28T09:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-02-28T12:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6200,
+                    "perAdult": 6200
+                },
+                "tags": [
+                    "Premium Economy"
+                ],
+                "expireAt": "2026-02-28T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4005",
+                "flightCode": "AI850",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2025-03-15T16:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-03-15T19:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 210,
+                    "label": "3h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 11200,
+                    "perAdult": 11200
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2026-03-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4006",
+                "flightCode": "EK202",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2025-04-20T22:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "LHR",
+                        "city": "London",
+                        "time": "2025-04-21T06:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 510,
+                    "label": "8h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "30kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 45500,
+                    "perAdult": 45500
+                },
+                "tags": [
+                    "Long Haul",
+                    "Premium"
+                ],
+                "expireAt": "2026-04-20T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4007",
+                "flightCode": "6E789",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2025-05-12T07:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "CCU",
+                        "city": "Kolkata",
+                        "time": "2025-05-12T09:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4100,
+                    "perAdult": 4100
+                },
+                "tags": [
+                    "Early Morning"
+                ],
+                "expireAt": "2026-05-12T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4008",
+                "flightCode": "SG456",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-06-08T13:20:00.000Z"
+                    },
+                    "to": {
+                        "code": "PNQ",
+                        "city": "Pune",
+                        "time": "2025-06-08T15:35:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3800,
+                    "perAdult": 3800
+                },
+                "tags": [
+                    "Affordable"
+                ],
+                "expireAt": "2026-06-08T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4009",
+                "flightCode": "AI645",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2025-07-01T18:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "SIN",
+                        "city": "Singapore",
+                        "time": "2025-07-01T23:59:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 254,
+                    "label": "4h 14m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 13800,
+                    "perAdult": 13800
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2026-07-01T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4010",
+                "flightCode": "UK305",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2025-08-14T10:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-08-14T12:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5800,
+                    "perAdult": 5800
+                },
+                "tags": [
+                    "Business Class"
+                ],
+                "expireAt": "2026-08-14T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4011",
+                "flightCode": "6E952",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "CCU",
+                        "city": "Kolkata",
+                        "time": "2025-09-05T15:10:00.000Z"
+                    },
+                    "to": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2025-09-05T17:40:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3600,
+                    "perAdult": 3600
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2026-09-05T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4012",
+                "flightCode": "SG789",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "GOI",
+                        "city": "Goa",
+                        "time": "2025-10-20T11:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-10-20T14:20:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 155,
+                    "label": "2h 35m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5200,
+                    "perAdult": 5200
+                },
+                "tags": [
+                    "Beach Return"
+                ],
+                "expireAt": "2026-10-20T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4013",
+                "flightCode": "AI404",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-11-11T20:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "BKK",
+                        "city": "Bangkok",
+                        "time": "2025-11-12T01:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 255,
+                    "label": "4h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 12500,
+                    "perAdult": 12500
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2026-11-11T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4014",
+                "flightCode": "EK412",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2025-12-25T23:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2025-12-26T02:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 14800,
+                    "perAdult": 14800
+                },
+                "tags": [
+                    "Holiday Season"
+                ],
+                "expireAt": "2026-12-25T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4015",
+                "flightCode": "6E123",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2026-01-15T06:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2026-01-15T08:00:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2800,
+                    "perAdult": 2800
+                },
+                "tags": [
+                    "Short Flight"
+                ],
+                "expireAt": "2027-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4016",
+                "flightCode": "UK608",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2026-02-14T17:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "GOI",
+                        "city": "Goa",
+                        "time": "2026-02-14T18:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4200,
+                    "perAdult": 4200
+                },
+                "tags": [
+                    "Weekend Getaway"
+                ],
+                "expireAt": "2027-02-14T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4017",
+                "flightCode": "SG234",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2026-03-08T12:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2026-03-08T13:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2500,
+                    "perAdult": 2500
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2027-03-08T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4018",
+                "flightCode": "AI789",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2026-04-18T09:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "SIN",
+                        "city": "Singapore",
+                        "time": "2026-04-18T16:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 330,
+                    "label": "5h 30m"
+                },
+                "stops": {
+                    "count": 1,
+                    "label": "1 Stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 16800,
+                    "perAdult": 16800
+                },
+                "tags": [
+                    "Connecting Flight"
+                ],
+                "expireAt": "2027-04-18T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4019",
+                "flightCode": "EK305",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2026-05-22T14:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "JFK",
+                        "city": "New York",
+                        "time": "2026-05-23T04:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 825,
+                    "label": "13h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "35kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 68500,
+                    "perAdult": 68500
+                },
+                "tags": [
+                    "Long Haul",
+                    "Premium"
+                ],
+                "expireAt": "2027-05-22T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4020",
+                "flightCode": "6E456",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2026-06-30T19:20:00.000Z"
+                    },
+                    "to": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2026-06-30T21:05:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 105,
+                    "label": "1h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3400,
+                    "perAdult": 3400
+                },
+                "tags": [
+                    "Evening Flight"
+                ],
+                "expireAt": "2027-06-30T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4021",
+                "flightCode": "SG567",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2026-07-15T08:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "CCU",
+                        "city": "Kolkata",
+                        "time": "2026-07-15T10:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3900,
+                    "perAdult": 3900
+                },
+                "tags": [
+                    "Morning Flight"
+                ],
+                "expireAt": "2027-07-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4022",
+                "flightCode": "UK712",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2026-08-08T13:10:00.000Z"
+                    },
+                    "to": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2026-08-08T14:25:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3200,
+                    "perAdult": 3200
+                },
+                "tags": [
+                    "Business"
+                ],
+                "expireAt": "2027-08-08T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4023",
+                "flightCode": "AI223",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2026-09-12T16:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2026-09-12T19:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 9800,
+                    "perAdult": 9800
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2027-09-12T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4024",
+                "flightCode": "EK118",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2026-10-05T10:20:00.000Z"
+                    },
+                    "to": {
+                        "code": "LHR",
+                        "city": "London",
+                        "time": "2026-10-05T15:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 505,
+                    "label": "8h 25m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "30kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 49500,
+                    "perAdult": 49500
+                },
+                "tags": [
+                    "Direct",
+                    "Premium"
+                ],
+                "expireAt": "2027-10-05T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4025",
+                "flightCode": "6E889",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "GOI",
+                        "city": "Goa",
+                        "time": "2026-11-18T11:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2026-11-18T12:20:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 50,
+                    "label": "50m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2900,
+                    "perAdult": 2900
+                },
+                "tags": [
+                    "Shortest"
+                ],
+                "expireAt": "2027-11-18T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4026",
+                "flightCode": "SG345",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2026-12-24T07:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2026-12-24T08:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 90,
+                    "label": "1h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3100,
+                    "perAdult": 3100
+                },
+                "tags": [
+                    "Early Bird"
+                ],
+                "expireAt": "2027-12-24T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4027",
+                "flightCode": "UK415",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2027-01-10T15:40:00.000Z"
+                    },
+                    "to": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2027-01-10T17:55:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6100,
+                    "perAdult": 6100
+                },
+                "tags": [
+                    "Premium Economy"
+                ],
+                "expireAt": "2028-01-10T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4028",
+                "flightCode": "AI556",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2027-02-28T19:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2027-02-28T22:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 195,
+                    "label": "3h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 10800,
+                    "perAdult": 10800
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2028-02-28T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4029",
+                "flightCode": "EK225",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2027-03-17T21:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2027-03-17T23:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 9200,
+                    "perAdult": 9200
+                },
+                "tags": [
+                    "Evening"
+                ],
+                "expireAt": "2028-03-17T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4030",
+                "flightCode": "6E667",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2027-04-22T08:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "CCU",
+                        "city": "Kolkata",
+                        "time": "2027-04-22T11:15:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4300,
+                    "perAdult": 4300
+                },
+                "tags": [
+                    "Morning"
+                ],
+                "expireAt": "2028-04-22T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4031",
+                "flightCode": "SG901",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2027-05-30T12:10:00.000Z"
+                    },
+                    "to": {
+                        "code": "PNQ",
+                        "city": "Pune",
+                        "time": "2027-05-30T14:25:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3700,
+                    "perAdult": 3700
+                },
+                "tags": [
+                    "Affordable"
+                ],
+                "expireAt": "2028-05-30T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4032",
+                "flightCode": "UK888",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2027-06-14T16:20:00.000Z"
+                    },
+                    "to": {
+                        "code": "GOI",
+                        "city": "Goa",
+                        "time": "2027-06-14T17:35:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4500,
+                    "perAdult": 4500
+                },
+                "tags": [
+                    "Weekend"
+                ],
+                "expireAt": "2028-06-14T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4033",
+                "flightCode": "AI334",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2027-07-07T10:50:00.000Z"
+                    },
+                    "to": {
+                        "code": "SIN",
+                        "city": "Singapore",
+                        "time": "2027-07-07T16:10:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 260,
+                    "label": "4h 20m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 14200,
+                    "perAdult": 14200
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2028-07-07T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4034",
+                "flightCode": "EK778",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2027-08-19T23:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2027-08-20T02:00:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 10100,
+                    "perAdult": 10100
+                },
+                "tags": [
+                    "Overnight"
+                ],
+                "expireAt": "2028-08-19T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4035",
+                "flightCode": "6E445",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2027-09-25T14:05:00.000Z"
+                    },
+                    "to": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2027-09-25T15:20:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2700,
+                    "perAdult": 2700
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2028-09-25T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4036",
+                "flightCode": "SG612",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "CCU",
+                        "city": "Kolkata",
+                        "time": "2027-10-30T18:40:00.000Z"
+                    },
+                    "to": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2027-10-30T21:10:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4100,
+                    "perAdult": 4100
+                },
+                "tags": [
+                    "Evening"
+                ],
+                "expireAt": "2028-10-30T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4037",
+                "flightCode": "UK225",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2027-11-11T09:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2027-11-11T11:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5900,
+                    "perAdult": 5900
+                },
+                "tags": [
+                    "Business"
+                ],
+                "expireAt": "2028-11-11T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4038",
+                "flightCode": "AI478",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2027-12-31T22:00:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2028-01-01T00:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 150,
+                    "label": "2h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 13500,
+                    "perAdult": 13500
+                },
+                "tags": [
+                    "New Year"
+                ],
+                "expireAt": "2028-12-31T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4039",
+                "flightCode": "EK334",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2028-01-15T13:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "LHR",
+                        "city": "London",
+                        "time": "2028-01-15T20:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 645,
+                    "label": "10h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "30kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 52500,
+                    "perAdult": 52500
+                },
+                "tags": [
+                    "Long Haul"
+                ],
+                "expireAt": "2029-01-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4040",
+                "flightCode": "6E778",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2028-02-22T07:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "GOI",
+                        "city": "Goa",
+                        "time": "2028-02-22T09:10:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 100,
+                    "label": "1h 40m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 3800,
+                    "perAdult": 3800
+                },
+                "tags": [
+                    "Early Morning"
+                ],
+                "expireAt": "2029-02-22T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4041",
+                "flightCode": "SG234",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2028-03-08T12:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2028-03-08T13:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 75,
+                    "label": "1h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2500,
+                    "perAdult": 2500
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2029-03-08T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4042",
+                "flightCode": "UK556",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2028-04-14T16:40:00.000Z"
+                    },
+                    "to": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2028-04-14T18:55:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 6200,
+                    "perAdult": 6200
+                },
+                "tags": [
+                    "Premium"
+                ],
+                "expireAt": "2029-04-14T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4043",
+                "flightCode": "AI667",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2028-05-19T19:20:00.000Z"
+                    },
+                    "to": {
+                        "code": "SIN",
+                        "city": "Singapore",
+                        "time": "2028-05-20T01:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 325,
+                    "label": "5h 25m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 15200,
+                    "perAdult": 15200
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2029-05-19T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4044",
+                "flightCode": "EK445",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2028-06-25T11:10:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2028-06-25T13:55:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 165,
+                    "label": "2h 45m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 9800,
+                    "perAdult": 9800
+                },
+                "tags": [
+                    "Direct"
+                ],
+                "expireAt": "2029-06-25T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4045",
+                "flightCode": "6E334",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2028-07-30T14:25:00.000Z"
+                    },
+                    "to": {
+                        "code": "CCU",
+                        "city": "Kolkata",
+                        "time": "2028-07-30T17:05:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 160,
+                    "label": "2h 40m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 4700,
+                    "perAdult": 4700
+                },
+                "tags": [
+                    "Afternoon"
+                ],
+                "expireAt": "2029-07-30T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4046",
+                "flightCode": "SG789",
+                "airline": {
+                    "code": "SG",
+                    "name": "SpiceJet",
+                    "logo": "https://cdn.example.com/airlines/spicejet.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2028-08-15T08:50:00.000Z"
+                    },
+                    "to": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2028-08-15T10:20:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 90,
+                    "label": "1h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2900,
+                    "perAdult": 2900
+                },
+                "tags": [
+                    "Morning"
+                ],
+                "expireAt": "2029-08-15T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4047",
+                "flightCode": "UK667",
+                "airline": {
+                    "code": "UK",
+                    "name": "Vistara",
+                    "logo": "https://cdn.example.com/airlines/vistara.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BOM",
+                        "city": "Mumbai",
+                        "time": "2028-09-20T17:15:00.000Z"
+                    },
+                    "to": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2028-09-20T19:30:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 135,
+                    "label": "2h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 5800,
+                    "perAdult": 5800
+                },
+                "tags": [
+                    "Evening"
+                ],
+                "expireAt": "2029-09-20T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4048",
+                "flightCode": "AI889",
+                "airline": {
+                    "code": "AI",
+                    "name": "Air India",
+                    "logo": "https://cdn.example.com/airlines/air-india.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "DEL",
+                        "city": "New Delhi",
+                        "time": "2028-10-31T20:45:00.000Z"
+                    },
+                    "to": {
+                        "code": "BKK",
+                        "city": "Bangkok",
+                        "time": "2028-11-01T02:00:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 255,
+                    "label": "4h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "20kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 13200,
+                    "perAdult": 13200
+                },
+                "tags": [
+                    "International"
+                ],
+                "expireAt": "2029-10-31T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4049",
+                "flightCode": "EK556",
+                "airline": {
+                    "code": "EK",
+                    "name": "Emirates",
+                    "logo": "https://cdn.example.com/airlines/emirates.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "BLR",
+                        "city": "Bangalore",
+                        "time": "2028-11-25T13:30:00.000Z"
+                    },
+                    "to": {
+                        "code": "DXB",
+                        "city": "Dubai",
+                        "time": "2028-11-25T16:45:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 195,
+                    "label": "3h 15m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "25kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 11200,
+                    "perAdult": 11200
+                },
+                "tags": [
+                    "Premium"
+                ],
+                "expireAt": "2029-11-25T00:00:00.000Z"
+            },
+            {
+                "id": "66c1f2a4b91c8d0012ab4050",
+                "flightCode": "6E991",
+                "airline": {
+                    "code": "6E",
+                    "name": "IndiGo",
+                    "logo": "https://cdn.example.com/airlines/indigo.png"
+                },
+                "route": {
+                    "from": {
+                        "code": "MAA",
+                        "city": "Chennai",
+                        "time": "2028-12-15T09:40:00.000Z"
+                    },
+                    "to": {
+                        "code": "HYD",
+                        "city": "Hyderabad",
+                        "time": "2028-12-15T11:10:00.000Z"
+                    }
+                },
+                "duration": {
+                    "minutes": 90,
+                    "label": "1h 30m"
+                },
+                "stops": {
+                    "count": 0,
+                    "label": "Non-stop"
+                },
+                "baggage": {
+                    "checkIn": "15kg",
+                    "cabin": "7kg"
+                },
+                "status": "scheduled",
+                "price": {
+                    "currency": "INR",
+                    "total": 2600,
+                    "perAdult": 2600
+                },
+                "tags": [
+                    "Cheapest"
+                ],
+                "expireAt": "2029-12-15T00:00:00.000Z"
+            }
+        ]
+    }
+}

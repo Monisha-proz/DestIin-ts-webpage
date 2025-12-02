@@ -13,7 +13,7 @@ import { LikeButton } from "@/components/local-ui/likeButton";
 import { auth } from "@/lib/auth";
 import FlightOrHotelReview from "@/components/sections/FlightOrHotelReview";
 import { getUserDetails } from "@/lib/services/user";
-import { formatCurrency, groupBy } from "@/lib/utils";
+import { formatCurrency, formatDateToYYYYMMDD, groupBy } from "@/lib/utils";
 import { Dropdown } from "@/components/local-ui/Dropdown";
 import RoomDetailsModal from "@/components/pages/hotels.[slug]/sections/RoomDetailsModal";
 import {
@@ -38,6 +38,9 @@ import { cookies } from "next/headers";
 import validateHotelSearchParams from "@/lib/zodSchemas/hotelSearchParams";
 import NotFound from "@/app/not-found";
 import routes from "@/data/routes.json";
+import Designation from "@/data/Destination";
+import { useEffectEvent } from "react";
+
 export default async function HotelDetailsPage({ params }) {
   const session = await auth();
   const slug = params.slug;
@@ -56,15 +59,49 @@ export default async function HotelDetailsPage({ params }) {
       />
     );
 
-  const hotelDetails = await getHotel(slug, searchState);
+  // const hotelDetails = await getHotel(slug, searchState);
+  const payload ={
+     "country": Designation.find(des => des.city === searchState.city)?.country || "",
+        cityCode: Number(Designation.find(des => des.city === searchState.city)?.code || ""),
+    "fromDate": formatDateToYYYYMMDD(new Date(Number(searchState.checkIn))),
+    "toDate": formatDateToYYYYMMDD(new Date(Number(searchState.checkOut))),
+    "sort": 1,
+    "currency": "EUR",
+    "occupancy": [
+        {
+            "adults": searchState?.guests,
+            "roomCount": searchState?.rooms,
+            "childAges": []
+        }
+    ],
+    "employee_id": "HR-EMP-00001",
+}
+  const hotelDetailsRes = await fetch(`${process.env.BACKEND_URL}/hotels/dida/${slug}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  const hotelDetailss = await hotelDetailsRes.json();
+  const hotelDetails = {
+    ...hotelDetailss?.data,
+    images:hotelDetailss?.data?.thumbnails.map(img=>img?.value),
+    rooms: hotelDetailss?.data?.rooms?.map((room) => ({
+      ...room,
+      hotelId: hotelDetailss?.data?._id || "6746b60b0f952c93060c5715", // Static fallback
+    })),
+  };
+  console.log("hotelDetails from external API:", hotelDetails);
 
-  if (Object.keys(hotelDetails).length === 0) return notFound();
+
+  if (Object?.keys(hotelDetails)?.length === 0) return notFound();
 
   const reviews = await getManyDocs(
     "HotelReview",
     { hotelId: strToObjectId(hotelDetails._id), slug },
     [hotelDetails._id + "_review", params.slug + "_review", "hotelReviews"],
-  );
+  )||[];
 
   const totalRatingsSum = reviews.reduce(
     (acc, review) => acc + +review.rating,
@@ -75,33 +112,35 @@ export default async function HotelDetailsPage({ params }) {
   const rating = totalRatingsSum / totalReviewsCount;
   const ratingScale = RATING_SCALE[Math.floor(rating)];
 
-  const roomsSorted = [...hotelDetails.rooms].sort((a, b) => {
+  const roomsSorted = [...hotelDetails?.rooms].sort((a, b) => {
     let aDiscountAmount = 0;
     let bDiscountAmount = 0;
 
-    if (a.price.discount.type === "percentage") {
-      aDiscountAmount = a.price.base * (+a.price.discount.amount / 100);
+    if (a?.price?.discount?.type === "percentage") {
+      aDiscountAmount = a?.price?.base * (+a?.price?.discount?.amount / 100);
     } else {
-      aDiscountAmount = +a.price.discount.amount;
+      aDiscountAmount = +a?.price?.discount.amount;
     }
-    if (b.price.discount.type === "percentage") {
-      bDiscountAmount = b.price.base * (+b.price.discount.amount / 100);
+    if (b?.price?.discount?.type === "percentage") {
+      bDiscountAmount = b?.price?.base * (+b?.price?.discount?.amount / 100);
     } else {
-      bDiscountAmount = +b.price.discount.amount;
+      bDiscountAmount = +b?.price?.discount?.amount;
     }
 
     const aPrice =
-      +a.price.base + +a.price.tax - aDiscountAmount + +a.price.serviceFee;
+      +a?.price?.base + +a?.price?.tax - aDiscountAmount + +a?.price?.serviceFee;
     const bPrice =
-      +b.price.base + +b.price.tax - bDiscountAmount + +b.price.serviceFee;
+      +b?.price?.base + +b?.price?.tax - bDiscountAmount + +b?.price?.serviceFee;
 
     return aPrice - bPrice;
   });
   const cheapestRoom = roomsSorted[0];
 
-  const price = hotelPriceCalculation(cheapestRoom.price, 1);
+  // const price = hotelPriceCalculation(cheapestRoom.price, 1);
+  // const price = hotelPriceCalculation(cheapestRoom?.TotalPrice, 1);
+  const price = cheapestRoom?.TotalPrice;
 
-  const cheapestRoomPrice = formatCurrency(price.total);
+  const cheapestRoomPrice = formatCurrency(cheapestRoom?.TotalPrice);
   const totalBeforeDiscount = formatCurrency(price.totalBeforeDiscount);
 
   let isLiked = false;
@@ -110,7 +149,12 @@ export default async function HotelDetailsPage({ params }) {
     isLiked = userDetails?.hotels?.bookmarked?.includes(hotelDetails._id);
   }
 
-  const groupByRoomType = groupBy(roomsSorted, (room) => room.roomType);
+  // const groupByRoomType = groupBy(roomsSorted, (room) => room.roomType);
+  
+    hotelDetails.features= hotelDetails?.HotelFacilities.split(/<br\s*\/?>/i)   // split by <br> or <br />
+  .map(item => item.trim()) // remove extra spaces
+  .filter(item => item.length > 0);
+    console.log("hotelDetails.features:",hotelDetails.features);
 
   return (
     <main className={"mx-auto mb-[90px] mt-10 w-[90%]"}>
@@ -119,21 +163,21 @@ export default async function HotelDetailsPage({ params }) {
         <div>
           <div className="mb-[16px] flex items-center gap-[16px]">
             <h1 className="text-[1.5rem] font-bold text-secondary">
-              {hotelDetails.name}
+              {hotelDetails?.name}
             </h1>
           </div>
           <p className="mb-[8px] text-[0.75rem] font-medium">
             <Image className="inline" src={location} alt="location_icon" />{" "}
             <span className="opacity-75">
-              {hotelDetails.address.streetAddress +
+              {hotelDetails?.location?.address +
                 ", " +
-                hotelDetails.address.city +
+                hotelDetails?.location?.stateCode +
                 ", " +
-                hotelDetails.address.stateProvince +
+                hotelDetails?.location?.destination?.name +
                 " " +
-                hotelDetails.address.postalCode +
+                hotelDetails?.zipCode +
                 ", " +
-                hotelDetails.address.country}
+                hotelDetails?.location?.country?.name}
             </span>
           </p>
           <div className="flex items-center gap-1 text-[0.75rem]">
@@ -152,13 +196,13 @@ export default async function HotelDetailsPage({ params }) {
               </p>
             )}
             <div className="space-x-2 max-sm:text-left">
-              {totalBeforeDiscount !== cheapestRoomPrice && (
+              {/* {totalBeforeDiscount !== cheapestRoomPrice && (
                 <>
                   <span className="text-base font-semibold text-black line-through">
                     {totalBeforeDiscount}
                   </span>
                 </>
-              )}
+              )} */}
               <span className="text-[2rem]">{cheapestRoomPrice}</span>
               /night
             </div>
@@ -192,16 +236,16 @@ export default async function HotelDetailsPage({ params }) {
         </div>
       </div>
       <div className="relative mb-[40px] grid w-auto grid-cols-4 grid-rows-2 gap-[8px] overflow-hidden rounded-[12px] max-lg:aspect-video lg:h-[500px]">
-        {hotelDetails.images.length > 0 && (
+        {hotelDetails?.images?.length > 0 && (
           <Image
             height={1000}
             className="col-span-2 row-span-2 h-full w-full object-cover object-center"
-            src={hotelDetails.images[0]}
+            src={hotelDetails?.images[0]}
             alt=""
             width={1000}
           />
         )}
-        {hotelDetails.images.length > 1 &&
+        {hotelDetails?.images?.length > 1 &&
           hotelDetails.images
             .slice(1, 5)
             .map((image) => (
@@ -241,8 +285,8 @@ export default async function HotelDetailsPage({ params }) {
               className="mx-auto max-w-[80%] sm:max-w-[90%]"
             >
               <CarouselContent>
-                {hotelDetails.images.length > 0 &&
-                  hotelDetails.images.map((img, i) => (
+                {hotelDetails?.images?.length > 0 &&
+                  hotelDetails?.images.map((img, i) => (
                     <CarouselItem
                       key={img}
                       className="flex h-full w-full items-center justify-center"
@@ -267,9 +311,11 @@ export default async function HotelDetailsPage({ params }) {
       <Separator className="my-[40px]" />
       <div>
         <h2 className="mb-[16px] text-2xl font-bold">Overview</h2>
-        <p className="mb-[32px] font-medium opacity-75">
-          {hotelDetails.description}
-        </p>
+        {/* <p className="mb-[32px] font-medium opacity-75"> */}
+           <div
+      className="prose max-w-none"
+      dangerouslySetInnerHTML={{ __html: hotelDetails?.description }}></div>
+        {/* </p> */}
         <div className="golobe-scrollbar flex gap-[16px] overflow-x-auto pb-3">
           <div className="h-[145px] min-w-[160px] whitespace-nowrap rounded-[12px] bg-primary p-[16px]">
             <p className="mb-[32px] text-[2rem] font-bold">
@@ -282,7 +328,7 @@ export default async function HotelDetailsPage({ params }) {
               {totalReviewsCount} reviews
             </p>
           </div>
-          {hotelDetails.features.slice(0).map((feature) => (
+          {hotelDetails?.features?.slice(0).map((feature) => (
             <div
               key={feature}
               className="flex h-[145px] min-w-[160px] flex-col justify-between rounded-[12px] border border-primary p-[16px]"
@@ -308,8 +354,13 @@ export default async function HotelDetailsPage({ params }) {
       <div>
         <h2 className="mb-[32px] text-2xl font-bold">Available Rooms</h2>
         <div className="space-y-6">
-          {Object.entries(groupByRoomType).map(([roomType, rooms]) => {
-            const groupByBedOptions = groupBy(rooms, (room) => room.bedOptions);
+          {Object.entries(hotelDetails?.rooms).map(([roomTypes, rooms]) => {
+            const roomType = rooms?.Rooms[0];
+            console.log("roomType:", roomType);
+            console.log("roomsrooms:", rooms);
+            // const groupByBedOptions = groupBy(rooms, (room) => room.bedOptions);
+            const groupByBedOptions = rooms;
+            const price = 100;
 
             return (
               <Dropdown
@@ -318,57 +369,56 @@ export default async function HotelDetailsPage({ params }) {
                 title={roomType}
               >
                 <div className="space-y-4 p-4">
-                  {Object.entries(groupByBedOptions).map(([key, arr]) => {
-                    const oneEquivalentRoom = arr[0];
-                    const price = hotelPriceCalculation(
-                      oneEquivalentRoom.price,
-                      1,
-                    );
-                    return (
+                  {/* {Object.entries(groupByBedOptions).map(([key, arr]) => {
+                    const oneEquivalentRoom = arr;
+                    console.log("oneEquivalentRoom:", oneEquivalentRoom);
+                    console.log("oneEquivalentRoom:", arr); */}
+                   
                       <RoomDetailsModal
-                        key={key}
-                        roomDetails={oneEquivalentRoom}
+                        key={roomTypes}
+                        roomDetails={rooms}
                         customTriggerElement={
                           <div
-                            key={key}
+                            key={roomTypes}
                             className="group flex items-center justify-between rounded-md border-b p-1 pb-4 hover:bg-gray-100"
                           >
                             <div className="flex items-center gap-4">
-                              <Image
-                                src={oneEquivalentRoom.images[0]}
+                              {/* <Image
+                                src={oneEquivalentRoom?.images[0]}
                                 alt="Room image"
                                 width={64}
                                 height={64}
                                 className="aspect-square rounded-md object-cover"
-                              />
+                              /> */}
                               <div>
                                 <p className="text-sm font-medium group-hover:underline">
-                                  {oneEquivalentRoom.bedOptions}
+                                  {rooms?.TotalPrice}
                                 </p>
                                 <p className="text-xs font-bold opacity-60">
-                                  {formatCurrency(price.total)} / night
+                                  {/* {formatCurrency(oneEquivalentRoom?.TotalPrice)} / night */}
+                                  {rooms?.TotalPrice} / night
                                 </p>
                                 <p className="text-xs opacity-60">
                                   Person capacity:{" "}
-                                  {oneEquivalentRoom.sleepsCount}
+                                  {rooms?.sleepsCount ||2}
                                 </p>
                                 <p className="text-xs opacity-60">
-                                  Available rooms: {arr.length}
+                                  Available rooms: {rooms?.length}
                                 </p>
                               </div>
                             </div>
                             <div>
-                              {Boolean(price.discountPercentage) && (
+                              {Boolean(price?.discountPercentage) && (
                                 <p className="rounded-md bg-tertiary p-1 font-bold text-white">
-                                  {price.discountPercentage}% OFF
+                                  {price?.discountPercentage}% OFF
                                 </p>
                               )}
                             </div>
                           </div>
                         }
                       />
-                    );
-                  })}
+                    {/* ); */}
+                  {/* })} */}
                 </div>
               </Dropdown>
             );
@@ -382,14 +432,14 @@ export default async function HotelDetailsPage({ params }) {
         </div>
         <div>
           <Map
-            lat={+hotelDetails.coordinates.lat}
-            lon={+hotelDetails.coordinates.lon}
+            lat={+hotelDetails?.coordinates?.longitude||28.6139}
+            lon={+hotelDetails?.coordinates?.latitude ||77.209}
             address={
-              hotelDetails.address.streetAddress +
+              hotelDetails?.address?.streetAddress +
               ", " +
-              hotelDetails.address.city +
+              hotelDetails?.address?.city +
               ", " +
-              hotelDetails.address.country
+              hotelDetails?.address?.country
             }
           />
         </div>
@@ -399,7 +449,7 @@ export default async function HotelDetailsPage({ params }) {
         <h2 className="mb-[32px] text-2xl font-bold">Amenities</h2>
         <div>
           <ul className="grid grid-cols-2 gap-[24px]">
-            {hotelDetails.amenities.map((amenity) => (
+            {hotelDetails?.amenities?.map((amenity) => (
               <li
                 key={amenity}
                 className="flex items-center gap-[8px] font-semibold"

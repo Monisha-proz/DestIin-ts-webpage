@@ -44,7 +44,7 @@ function RoomSelectorSummary({
           </span>
           <span className="flex items-center gap-2 text-sm font-semibold text-gray-700 sm:text-base">
             <BedDouble className="text-primary" />
-            Total Capacity: {totalCapacity}
+            Total Capacity: {totalCapacity||0}
           </span>
         </div>
         {totalCapacity < guests ? (
@@ -64,8 +64,8 @@ function RoomSelectorSummary({
             <Button
               onClick={handleProceed}
               className="mt-2 w-full sm:ml-4 sm:w-fit sm:self-end"
-              disabled={!isValid}
-              aria-disabled={!isValid}
+              // disabled={!isValid}
+              // aria-disabled={!isValid}
             >
               Continue
             </Button>
@@ -76,7 +76,7 @@ function RoomSelectorSummary({
   );
 }
 
-export function RoomSelector({ nextStep, rooms, guests = 1 }) {
+export function RoomSelector({ nextStep, rooms, guests = 1,hotelDetails }) {
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -119,8 +119,16 @@ export function RoomSelector({ nextStep, rooms, guests = 1 }) {
   const selectedRoomGroups = useSelector(
     (state) => state.hotelRoomsSelector.value,
   );
+  //  const sortedRooms = [...rooms].sort((r1, r2) => {
+  //         const r1Price = r1?.TotalPrice || 0;
+  //         const r2Price = r2?.TotalPrice || 0;
+  //         return r1Price - r2Price;
+  //       });
+                        const max = rooms.length;
+
   const groupedByRoomType = useMemo(() => {
-    return groupBy(rooms, (room) => room.roomType);
+    // return groupBy(rooms, (room) => room?.roomType);
+    return rooms;
   }, [rooms]);
 
   const totalCapacity = selectedRoomGroups.reduce((acc, curr) => {
@@ -145,6 +153,7 @@ export function RoomSelector({ nextStep, rooms, guests = 1 }) {
   function setProgress(step) {
     router.push(`${pathname}?tab=${step}`);
   }
+ 
   return hasGuestFormErrors ? (
     <div className="flex h-full min-h-[300px] flex-col items-center justify-center gap-4 rounded-md border border-red-300 bg-red-50 p-6 shadow-sm">
       <div className="flex items-center gap-2 text-red-600">
@@ -170,36 +179,38 @@ export function RoomSelector({ nextStep, rooms, guests = 1 }) {
         isValid={isValid}
         handleProceed={handleProceed}
       />
-      {Object.entries(groupedByRoomType).map(([roomType, rooms]) => {
-        const groupByBedOptions = groupBy(rooms, (room) => room.bedOptions);
+      {Object.entries(groupedByRoomType).map(([roomType, rooms]) => { 
+        // const groupByBedOptions = groupBy(rooms, (room) => room.bedOptions);
+        
+        const selectedRooms = selectedRoomGroups.filter(
+                  (r) => r?._id === rooms?._id,
+                );
+                const selected = selectedRooms.length;
+
         return (
           <Dropdown
             key={roomType}
             open={roomType === "Budget Room"}
-            title={roomType}
+            title={rooms?.Rooms[0]}
           >
             <div className="space-y-4 p-4">
-              {Object.entries(groupByBedOptions).map(([bedOption, rooms]) => {
-                const sortedRooms = rooms.sort((r1, r2) => {
-                  const r1Price = hotelPriceCalculation(r1.price, 1).total;
-                  const r2Price = hotelPriceCalculation(r2.price, 1).total;
-                  return r1Price - r2Price;
-                });
+              {/* {Object.entries(groupByBedOptions).map(([bedOption, rooms]) => {
+            
                 const room = sortedRooms[0];
                 const price = singleRoomFareBreakdown(room, 1);
                 const selectedRooms = selectedRoomGroups.filter(
                   (r) => r.bedOptions === bedOption && r.roomType === roomType,
                 );
                 const selected = selectedRooms.length;
-                const max = rooms.length;
-                return (
+                 return ( */}
                   <div
-                    key={room._id}
+                    key={rooms._id}
                     className="flex items-center justify-between border-b pb-4"
                   >
                     <div className="flex items-center gap-4">
                       <Image
-                        src={room.images[0]}
+                        // src={rooms.images[0]}
+                        src={hotelDetails?.thumbnails?.[roomType]?.value}
                         alt="Room image"
                         width={64}
                         height={64}
@@ -207,13 +218,14 @@ export function RoomSelector({ nextStep, rooms, guests = 1 }) {
                       />
                       <div>
                         <p className="text-sm font-medium">
-                          Sleeps {room.sleepsCount} | {room.bedOptions}
+                          
+                          {/* Sleeps {rooms.sleepsCount} | {rooms.bedOptions} */}
                         </p>
                         <p className="text-xs font-bold opacity-60">
-                          {formatCurrency(price.total)} / night
+                          {rooms?.Currency} {rooms?.TotalPrice}/ night
                         </p>
                         <p className="text-xs opacity-60">
-                          Available rooms: {max}
+                          {/* Available rooms: {max} */}
                         </p>
                       </div>
                     </div>
@@ -229,7 +241,7 @@ export function RoomSelector({ nextStep, rooms, guests = 1 }) {
                             handleDecrement(roomToRemove._id);
                           }
                         }}
-                        disabled={selected === 0}
+                        // disabled={selected === 0}
                       >
                         <Minus />
                       </Button>
@@ -240,28 +252,20 @@ export function RoomSelector({ nextStep, rooms, guests = 1 }) {
                         className="rounded-full"
                         size="icon"
                         onClick={() => {
-                          const roomToAdd = sortedRooms.find(
-                            (r) =>
-                              !selectedRooms
-                                .map((el) => el._id)
-                                .includes(r._id),
-                          );
-                          if (roomToAdd) {
-                            handleIncrement(roomToAdd, max);
-                          }
+                          handleIncrement(rooms, max);
                         }}
-                        disabled={selected === max}
+                        // disabled={selected === max}
                       >
                         <Plus />
                       </Button>
                     </div>
                   </div>
-                );
-              })}
+                {/* );
+              })} */}
             </div>
           </Dropdown>
         );
-      })}
+      })} 
     </div>
   );
 }
