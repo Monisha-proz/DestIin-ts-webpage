@@ -23,6 +23,7 @@ async function seedMinimalFlightData() {
         website: "https://www.emirates.com/"
       },
       airlinePolicy: {
+        flightType: "International", // Required field
         cancellationPolicy: {
           gracePeriodHours: 24,
           cutoffHoursBeforeDeparture: 3,

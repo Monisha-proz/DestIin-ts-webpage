@@ -16,7 +16,10 @@ export async function GET(req) {
             iataCode: "TEST",
             name: "Test Airline",
             contact: { phone: "123", email: "test@test.com", website: "test.com" },
-            airlinePolicy: { cancellationPolicy: {} }
+            airlinePolicy: { 
+                cancellationPolicy: {},
+                flightType: "Domestic" // Required field
+            }
         });
     }
 
