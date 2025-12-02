@@ -55,6 +55,7 @@
     "html2pdf.js": "^0.10.3",
     "image-to-base64": "^2.2.0",
     "jose": "^6.1.0",
+    "jsonwebtoken": "^9.0.2",
     "jspdf": "^3.0.1",
     "lucide-react": "^0.372.0",
     "mongodb": "^6.8.0",
