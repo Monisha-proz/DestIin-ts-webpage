@@ -1,44 +1,43 @@
-import { Hotel } from "@/lib/db/models";
+import { NextResponse } from "next/server";
 
-// Force dynamic rendering - this route cannot be statically generated
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
-
-  const searchParams = Object.fromEntries(new URL(req.url).searchParams);
-
-  const limit = Number(searchParams?.limit) || 10;
-  const searchQuery = searchParams?.searchQuery?.trim().toLowerCase() || "";
-
-  const Places = [
-    { city: "Chennai", country: "IN", code: "553248633981715834" },
-    { city: "Delhi", country: "IN", code: "180000" },
-    { city: "Bengaluru", country: "IN", code: "553248633981715864" },
-  ];
-
-  // Helper function → filter Places list using searchQuery
-  const filterPlaces = (query) => {
-    if (!query) return Places;
-
-    return Places.filter((place) =>
-      place.city.toLowerCase().includes(query) ||
-      place.country.toLowerCase().includes(query)
-    );
-  };
-
   try {
-    // ----------------------------------------
-    // CASE 1: No search query → return DB places or default Places
-    // ----------------------------------------
+    const { searchParams } = new URL(req.url);
+
+    const limit = Number(searchParams.get("limit")) || 10;
+    const searchQuery =
+      searchParams.get("searchQuery")?.trim().toLowerCase() || "";
+
+    const Places = [
+      { city: "Chennai", country: "IN", code: "553248633981715834" },
+      { city: "Delhi", country: "IN", code: "180000" },
+      { city: "Bengaluru", country: "IN", code: "553248633981715864" },
+    ];
+
+    // ✅ IMPORT DB MODEL AT RUNTIME ONLY
+    const { Hotel } = await import("@/lib/db/models");
+
+    // Helper
+    const filterPlaces = (query) => {
+      if (!query) return Places;
+      return Places.filter(
+        (p) =>
+          p.city.toLowerCase().includes(query) ||
+          p.country.toLowerCase().includes(query)
+      );
+    };
+
+    // ---------------- NO SEARCH ----------------
     if (!searchQuery) {
       const hotell = await Hotel.find({})
         .limit(limit)
-        .select("address -_id")
-        .exec();
+        .select("address -_id");
 
       const hotels =
-        hotell?.length === 0
+        hotell.length === 0
           ? Places
           : hotell.map((hotel) => ({
               city: hotel.address.city,
@@ -46,7 +45,7 @@ export async function GET(req) {
               code: hotel.address.code,
             }));
 
-      return Response.json({
+      return NextResponse.json({
         success: true,
         message: "Available places fetched successfully",
         data: hotels.map((h) => ({
@@ -58,13 +57,9 @@ export async function GET(req) {
       });
     }
 
-    // ----------------------------------------
-    // CASE 2: Search DB + search Places list
-    // ----------------------------------------
-
+    // ---------------- SEARCH ----------------
     const safeRegex = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    // Search from MongoDB
     const hotels = await Hotel.find({
       $or: [
         {
@@ -86,8 +81,7 @@ export async function GET(req) {
       ],
     })
       .limit(limit)
-      .select("address -_id")
-      .exec();
+      .select("address -_id");
 
     const hotelResults = hotels.map((hotel) => ({
       city: hotel.address.city,
@@ -95,7 +89,6 @@ export async function GET(req) {
       type: "place",
     }));
 
-    // Search Places list
     const placeResults = filterPlaces(searchQuery).map((p) => ({
       city: p.city,
       country: p.country,
@@ -103,26 +96,20 @@ export async function GET(req) {
       code: p.code,
     }));
 
-    // Merge + remove duplicates (object-based to avoid Map usage)
-    const combined = [...hotelResults, ...placeResults];
-    const keyed = {};
-    for (const item of combined) {
-      keyed[`${item.city}-${item.country}`] = item;
-    }
-    const finalData = Object.values(keyed);
+    const unique = {};
+    [...hotelResults, ...placeResults].forEach((item) => {
+      unique[`${item.city}-${item.country}`] = item;
+    });
 
-    return Response.json({
+    return NextResponse.json({
       success: true,
       message: "Available places fetched successfully",
-      data: finalData,
+      data: Object.values(unique),
     });
-  } catch (e) {
-    console.error('Available places API error', e && e.stack ? e.stack : e);
-    return Response.json(
-      {
-        success: false,
-        message: "Error getting available places",
-      },
+  } catch (err) {
+    console.error("Available places API error:", err);
+    return NextResponse.json(
+      { success: false, message: "Error getting available places" },
       { status: 500 }
     );
   }
