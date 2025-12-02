@@ -1,5 +1,8 @@
 import { Hotel } from "@/lib/db/models";
 
+// Force dynamic rendering since we use request headers
+export const dynamic = 'force-dynamic';
+
 export async function GET(req) {
   // Log minimal, serializable request details so logs appear clearly in the server terminal
   try {

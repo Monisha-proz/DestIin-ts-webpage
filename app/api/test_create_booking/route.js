@@ -18,7 +18,9 @@ export async function GET(req) {
             contact: { phone: "123", email: "test@test.com", website: "test.com" },
             airlinePolicy: { 
                 cancellationPolicy: {},
-                flightType: "Domestic" // Required field
+                flightType: "Domestic", // Required field
+                  required: true,
+
             }
         });
     }
