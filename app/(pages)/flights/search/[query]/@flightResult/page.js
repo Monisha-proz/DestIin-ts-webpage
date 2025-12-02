@@ -2,7 +2,7 @@ import { FlightResult } from "@/components/pages/flights.search/sections/FlightR
 import { cookies } from "next/headers";
 import validateFlightSearchParams from "@/lib/zodSchemas/flightSearchParams";
 import { getUserDetails } from "@/lib/services/user";
-import { getFlights } from "@/lib/services/flights";
+import { getFlightsFromJSON } from "@/lib/helpers/flights/getFlightsFromJSON";
 import {
   airportStrToObject,
   parseFlightSearchParams,
@@ -86,7 +86,7 @@ async function FlightResultPage({ params }) {
   const departureDate = new Date(desiredDepartureDate);
   const returnDate = new Date(desiredReturnDate);
 
-  const flightResults = await getFlights(
+  const flightResults = await getFlightsFromJSON(
     {
       departureAirportCode: from.iataCode,
       arrivalAirportCode: to.iataCode,

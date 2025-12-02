@@ -82,9 +82,11 @@ export async function Nav({ className, type = "default", session, ...props }) {
       <ActiveNavLink
         className={"hidden h-full lg:flex lg:items-center lg:gap-8"}
       />
+      
 
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Logo className={"h-[36px] w-fit"} otherFill={types[type].logoFill} />
+      <p className="fascinate-regular text-3xl tracking-[0.095em]">DEST<span className="rubik-wet-paint-regular text-primary">II</span>N</p>
+        {/* <Logo className={"h-[36px] w-fit"} otherFill={types[type].logoFill} /> */}
       </div>
 
       {isLoggedIn === true ? (

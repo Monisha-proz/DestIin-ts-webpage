@@ -391,10 +391,10 @@ function SearchFlightsForm({ params = {} }) {
               )}
               isLoading={isFormLoading}
               fetchInputs={{
-                url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/flights/available_airports`,
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/flights/available_cities`,
                 method: "GET",
                 searchParamsName: "searchQuery",
-                next: { revalidate: 21600, tags: ["airports"] },
+                next: { revalidate: 21600, tags: ["cities"] },
               }}
               excludeVals={[flightFormData.to]}
               defaultSelected={flightFormData.from}
@@ -441,9 +441,9 @@ function SearchFlightsForm({ params = {} }) {
               )}
               isLoading={isFormLoading}
               fetchInputs={{
-                url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/flights/available_airports`,
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/flights/available_cities`,
                 method: "GET",
-                next: { revalidate: 21600, tags: ["airports"] },
+                next: { revalidate: 21600, tags: ["cities"] },
                 searchParamsName: "searchQuery",
               }}
               excludeVals={[flightFormData.from]}

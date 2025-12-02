@@ -7,13 +7,11 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { getUserDetails } from "@/lib/services/user";
 import SessionTimeoutCountdown from "@/components/local-ui/SessionTimeoutCountdown";
-import { getManyDocs, getOneDoc } from "@/lib/db/getOperationDB";
+import { getFlightFromJSON } from "@/lib/helpers/flights/getFlightsFromJSON";
 import BookingSteps from "@/components/pages/flights.book/BookingSteps";
-import { getAvailableSeats } from "@/lib/services/flights";
 import InfoPage from "@/components/InfoPage";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { strToObjectId } from "@/lib/db/utilsDB";
 
 export default async function FlightBookPage({ params, searchParams }) {
   const session = await auth();
@@ -41,61 +39,36 @@ export default async function FlightBookPage({ params, searchParams }) {
   const flightCode = p[0];
   const date = !isNaN(+p[1]) ? +p[1] : p[1];
 
-  const flight = await getOneDoc(
-    "FlightItinerary",
-    { flightCode: flightCode, date: new Date(date) },
-    ["flight"],
-  );
+  const flight = await getFlightFromJSON(flightCode, date);
 
-  if (Object.keys(flight).length === 0) {
+  if (!flight) {
     notFound();
   }
 
   let hasPendingBooking = false;
   let bookingId = null;
+  
+  // Static data mode: skip pending booking checks from DB
   if (loggedIn) {
-    const userDetails = await getUserDetails(session.user.id, 0);
-    metaData.isBookmarked = userDetails.flights.bookmarked.some((el) => {
-      return el.flightId._id === flight._id;
-    });
-
-    if (searchParams.tab === "payment") {
-      const booking = await getManyDocs(
-        "FlightBooking",
-        {
-          flightItineraryId: strToObjectId(flight._id),
-          userId: strToObjectId(session.user.id),
-          paymentStatus: "pending",
-        },
-        ["userFlightBooking"],
-        0,
-      );
-
-      bookingId = booking[0]?._id;
-      hasPendingBooking = booking.length > 1;
+    try {
+      const userDetails = await getUserDetails(session.user.id, 0);
+      metaData.isBookmarked = userDetails?.flights?.bookmarked?.some((el) => {
+        return el.flightId?._id === flight._id;
+      }) || false;
+    } catch (e) {
+      console.log("Error fetching user details:", e);
     }
-  } else {
-    const booking = await getOneDoc(
-      "FlightBooking",
-      {
-        flightItineraryId: strToObjectId(flight._id),
-        userId: strToObjectId(session.user.id),
-        paymentStatus: "pending",
-        ticketStatus: "pending",
-      },
-      ["userFlightBooking"],
-      0,
-    );
-    bookingId = booking?._id;
-    hasPendingBooking = Object.keys(booking).length !== 0;
   }
 
   const isFlightExpired = flight.expireAt < new Date();
   let isSeatsAvailable = true;
 
   for (const segment of flight.segmentIds) {
-    const availableSeats = await getAvailableSeats(segment._id, flightClass, 0);
-    if (availableSeats.length === 0) {
+    // For static data, we use the availableSeatsCount from the flight object
+    const segmentSeats = flight.availableSeatsCount.find(s => s.segmentId === segment._id);
+    const availableSeats = segmentSeats ? segmentSeats.availableSeats : 0;
+    
+    if (availableSeats === 0) {
       isSeatsAvailable = false;
       break;
     }

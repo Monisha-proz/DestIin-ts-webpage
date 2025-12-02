@@ -13,26 +13,26 @@ import { deleteManyDocs } from "@/lib/db/deleteOperationDB";
 import { createManyDocs } from "@/lib/db/createOperationDB";
 
 export async function POST(req) {
-  if (
-    req.headers.get("Authorization") !==
-    `Bearer ${process.env.API_SECRET_TOKEN}`
-  ) {
-    return new Response("Unauthorized", { status: 401 });
-  }
+//   if (
+//     req.headers.get("Authorization") !==
+//     `Bearer ${process.env.API_SECRET_TOKEN}`
+//   ) {
+//     return new Response("Unauthorized", { status: 401 });
+//   }
   try {
     console.log("Uploading flights DB...");
-    await uploadFlightsDB();
+    const result = await uploadFlightsDB();
     console.log("Flights DB uploaded successfully.");
     return Response.json({
       success: true,
-      message: "Flights DB uploaded successfully.",
+      data: result
     });
   } catch (error) {
     console.error("Error uploading flights DB:", error);
     return Response.json(
       {
         success: false,
-        message: "Error uploading flights DB",
+        message: "Error uploading flights DB: " + error.message,
       },
       { status: 500 },
     );
@@ -77,13 +77,21 @@ async function uploadFlightsDB() {
     FlightSeat: flightSeats,
   };
 
+
+  const results = {};
   for (const [key, value] of Object.entries(data)) {
-    await deleteManyDocs(key);
-    console.log("deleted", key);
-    // create
-    await createManyDocs(key, value);
-    console.log("created", key);
+    try {
+        await deleteManyDocs(key);
+        console.log("deleted", key);
+        // create
+        await createManyDocs(key, value);
+        console.log("created", key);
+        results[key] = "Success";
+    } catch (e) {
+        console.error(`Error saving ${key}:`, e.message);
+        results[key] = `Error: ${e.message}`;
+    }
   }
 
-  return data;
+  return results;
 }
