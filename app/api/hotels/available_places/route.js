@@ -1,137 +1,67 @@
-import { Hotel } from "@/lib/db/models";
+import { NextResponse } from "next/server";
+
+// ✅ Required for Vercel (prevents static build errors)
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
-  // Log minimal, serializable request details so logs appear clearly in the server terminal
   try {
-    const headers = {};
-    for (const [k, v] of req.headers) headers[k] = v;
-    console.log("Available places API called", {
-      url: req.url,
-      method: req.method,
-      headers,
-    });
-  } catch (logErr) {
-    console.log("Available places API called - unable to serialize request details", String(logErr));
-  }
+    // ✅ Read token safely
+    const { searchParams } = new URL(req.url);
+    const token = searchParams.get("token");
 
-  const searchParams = Object.fromEntries(new URL(req.url).searchParams);
+    if (!token) {
+      return NextResponse.json(
+        { success: false, message: "Token is required" },
+        { status: 400 }
+      );
+    }
 
-  const limit = Number(searchParams?.limit) || 10;
-  const searchQuery = searchParams?.searchQuery?.trim().toLowerCase() || "";
+    // ✅ Import server-only libs AT RUNTIME (VERY IMPORTANT)
+    const jwt = await import("jsonwebtoken");
+    const { User } = await import("@/lib/db/models");
 
-  const Places = [
-    { city: "Chennai", country: "IN", code: "553248633981715834" },
-    { city: "Delhi", country: "IN", code: "180000" },
-    { city: "Bengaluru", country: "IN", code: "553248633981715864" },
-  ];
-
-  // Helper function → filter Places list using searchQuery
-  const filterPlaces = (query) => {
-    if (!query) return Places;
-
-    return Places.filter((place) =>
-      place.city.toLowerCase().includes(query) ||
-      place.country.toLowerCase().includes(query)
+    // ✅ Verify token
+    const decoded = jwt.default.verify(
+      token,
+      process.env.JWT_SECRET
     );
-  };
 
-  try {
-    // ----------------------------------------
-    // CASE 1: No search query → return DB places or default Places
-    // ----------------------------------------
-    if (!searchQuery) {
-      const hotell = await Hotel.find({})
-        .limit(limit)
-        .select("address -_id")
-        .exec();
-
-      const hotels =
-        hotell?.length === 0
-          ? Places
-          : hotell.map((hotel) => ({
-              city: hotel.address.city,
-              country: hotel.address.country,
-              code: hotel.address.code,
-            }));
-
-      return Response.json({
-        success: true,
-        message: "Available places fetched successfully",
-        data: hotels.map((h) => ({
-          city: h.city,
-          country: h.country,
-          type: "place",
-          code: h.code,
-        })),
-      });
+    if (!decoded?.id) {
+      return NextResponse.json(
+        { success: false, message: "Invalid token" },
+        { status: 400 }
+      );
     }
 
-    // ----------------------------------------
-    // CASE 2: Search DB + search Places list
-    // ----------------------------------------
+    // ✅ Find user
+    const user = await User.findById(decoded.id);
 
-    const safeRegex = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-    // Search from MongoDB
-    const hotels = await Hotel.find({
-      $or: [
-        {
-          $expr: {
-            $regexMatch: {
-              input: { $toLower: "$address.city" },
-              regex: safeRegex,
-            },
-          },
-        },
-        {
-          $expr: {
-            $regexMatch: {
-              input: { $toLower: "$address.country" },
-              regex: safeRegex,
-            },
-          },
-        },
-      ],
-    })
-      .limit(limit)
-      .select("address -_id")
-      .exec();
-
-    const hotelResults = hotels.map((hotel) => ({
-      city: hotel.address.city,
-      country: hotel.address.country,
-      type: "place",
-    }));
-
-    // Search Places list
-    const placeResults = filterPlaces(searchQuery).map((p) => ({
-      city: p.city,
-      country: p.country,
-      type: "place",
-      code: p.code,
-    }));
-
-    // Merge + remove duplicates (object-based to avoid Map usage)
-    const combined = [...hotelResults, ...placeResults];
-    const keyed = {};
-    for (const item of combined) {
-      keyed[`${item.city}-${item.country}`] = item;
+    if (!user) {
+      return NextResponse.json(
+        { success: false, message: "User not found" },
+        { status: 404 }
+      );
     }
-    const finalData = Object.values(keyed);
 
-    return Response.json({
+    // ✅ Update verification status
+    user.isVerified = true;
+    await user.save();
+
+    return NextResponse.json({
       success: true,
-      message: "Available places fetched successfully",
-      data: finalData,
+      message: "Email verified successfully"
     });
-  } catch (e) {
-    console.error('Available places API error', e && e.stack ? e.stack : e);
-    return Response.json(
+
+  } catch (error) {
+    console.error("Confirm email error:", error);
+
+    return NextResponse.json(
       {
         success: false,
-        message: "Error getting available places",
+        message: "Invalid or expired verification link"
       },
-      { status: 500 }
+      { status: 400 }
     );
   }
 }

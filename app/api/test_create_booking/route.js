@@ -16,7 +16,10 @@ export async function GET(req) {
             iataCode: "TEST",
             name: "Test Airline",
             contact: { phone: "123", email: "test@test.com", website: "test.com" },
-            airlinePolicy: { cancellationPolicy: {} }
+            airlinePolicy: { 
+                cancellationPolicy: {},
+                flightType: "International" // Required field
+            }
         });
     }
 
@@ -48,7 +51,7 @@ export async function GET(req) {
             segmentIds: [], // Empty for now or create segments if needed
             totalDurationMinutes: 120,
             layovers: [],
-            baggageAllowance: {},
+            // baggageAllowance is optional - omit it to avoid validation errors
             status: "scheduled",
             expireAt: new Date(Date.now() + 86400000 * 365)
         });
